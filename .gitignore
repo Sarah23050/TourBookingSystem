@@ -1,0 +1,17 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Java
+*.class
+out/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# JavaFX (optional builds)
+target/

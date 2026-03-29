@@ -1,10 +1,11 @@
 package com.sarah.tourbookingsystem;
 
+import com.sarah.tourbookingsystem.main.BookingSystem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 
-import com.sarah.tourbookingsystem.model.Tour;
+import com.sarah.tourbookingsystem.model.*;
 import com.sarah.tourbookingsystem.service.SearchService;
 
 @SpringBootApplication
@@ -18,9 +19,9 @@ public class TourBookingSystemApplication {
         System.out.println("Search Results:");
         List<Tour> results = searchService.searchTours("Tour");
 
-        for (Tour t : results) {
-            System.out.println(t.getName() + " - " + t.getLocation());
-        }
+        System.out.println("Starting Tour Booking System...");
+        BookingSystem var1 = new BookingSystem();
+        var1.start();
     }
 
 }

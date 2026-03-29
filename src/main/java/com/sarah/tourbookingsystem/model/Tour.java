@@ -2,19 +2,35 @@ package com.sarah.tourbookingsystem.model;
 
 public class Tour {
     private String name;
-    private String location;
+    private String description;
     private double price;
-    private String date;
+    private int availableSeats;
 
-    public Tour(String name, String location, double price, String date) {
-        this.name = name;
-        this.location = location;
-        this.price = price;
-        this.date = date;
+    public Tour(String var1, String var2, double var3, int var5) {
+        this.name = var1;
+        this.description = var2;
+        this.price = var3;
+        this.availableSeats = var5;
     }
 
-    public String getName() { return name; }
-    public String getLocation() { return location; }
-    public double getPrice() { return price; }
-    public String getDate() { return date; }
+    public String getDetails() {
+        return this.name + " - " + this.description + " | $" + this.price + " | Seats: " + this.availableSeats;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public int getAvailableSeats() {
+        return this.availableSeats;
+    }
+
+    public void bookSeat() {
+        --this.availableSeats;
+    }
+
 }

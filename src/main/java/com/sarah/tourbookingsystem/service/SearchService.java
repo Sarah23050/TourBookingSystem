@@ -6,16 +6,7 @@ import java.util.List;
 
 public class SearchService {
 
-    private List<Tour> tours = new ArrayList<>();
-
-    public SearchService() {
-        tours.add(new Tour("Bosphorus Tour", "Istanbul", 500, 20));
-        tours.add(new Tour("Cappadocia Tour", "Nevşehir", 1500, 5));
-        tours.add(new Tour("Antalya Beach Tour", "Antalya", 800, 7));
-    }
-
-
-    public List<Tour> searchTours(String keyword) {
+    public List<Tour> searchTours(List<Tour> tours, String keyword) {
         List<Tour> result = new ArrayList<>();
 
         for (Tour t : tours) {
@@ -27,10 +18,7 @@ public class SearchService {
         return result;
     }
 
-
-
-
-    public List<Tour> filterByPrice(double maxPrice) {
+    public List<Tour> filterByPrice(List<Tour> tours, double maxPrice) {
         List<Tour> result = new ArrayList<>();
 
         for (Tour t : tours) {

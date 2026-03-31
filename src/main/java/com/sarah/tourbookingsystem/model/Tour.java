@@ -5,16 +5,18 @@ public class Tour {
     private String description;
     private double price;
     private int availableSeats;
+    private int date;
 
-    public Tour(String var1, String var2, double var3, int var5) {
+    public Tour(String var1, String var2, double var3, int var4, int var5) {
         this.name = var1;
         this.description = var2;
         this.price = var3;
-        this.availableSeats = var5;
+        this.availableSeats = var4;
+        this.date = var5;
     }
 
     public String getDetails() {
-        return this.name + " - " + this.description + " | $" + this.price + " | Seats: " + this.availableSeats;
+        return this.name + " - " + this.description + " | $" + this.price + " | Date: " + " | Seats: " + this.availableSeats;
     }
 
     public String getName() {
@@ -27,6 +29,10 @@ public class Tour {
 
     public int getAvailableSeats() {
         return this.availableSeats;
+    }
+
+    public int getDate() {
+        return this.date;
     }
 
     public void bookSeat() {

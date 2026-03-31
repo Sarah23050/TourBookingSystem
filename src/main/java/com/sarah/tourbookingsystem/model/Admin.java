@@ -17,10 +17,14 @@ public class Admin extends User {
         this.loadSampleTours();
     }
 
+    public List<Customer> getAllCustomers() {
+        return allCustomers;
+    }
+
     private void loadSampleTours() {
-        this.allTours.add(new Tour("Paris Adventure", "Visit Eiffel Tower", (double)500.0F, 10));
-        this.allTours.add(new Tour("Beach Relax", "7 days beach vacation", (double)300.0F, 15));
-        this.allTours.add(new Tour("Mountain Trek", "Hiking adventure", (double)400.0F, 8));
+        this.allTours.add(new Tour("Paris Adventure", "Visit Eiffel Tower", (double)500.0F, 10, 10/3));
+        this.allTours.add(new Tour("Beach Relax", "7 days beach vacation", (double)300.0F, 15, 1/1));
+        this.allTours.add(new Tour("Mountain Trek", "Hiking adventure", (double)400.0F, 8, 24/6));
     }
 
     public void showAllBookings() {
@@ -44,7 +48,10 @@ public class Admin extends User {
         System.out.print("Available seats: ");
         int var6 = var1.nextInt();
         var1.nextLine();
-        this.allTours.add(new Tour(var2, var3, var4, var6));
+        System.out.println("Date: ");
+        int var7 = var1.nextInt();
+        var1.nextLine();
+        this.allTours.add(new Tour(var2, var3, var4, var6, var7));
         System.out.println("✅ New tour added!");
     }
 

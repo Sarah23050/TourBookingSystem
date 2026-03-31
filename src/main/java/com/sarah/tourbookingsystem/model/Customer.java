@@ -19,7 +19,7 @@ public class Customer extends User {
         if (this.bookedTours.isEmpty()) {
             System.out.println("No tours booked yet.");
         } else {
-            System.out.println("\n\ud83d\udccb Your Booked Tours:");
+            System.out.println("\n\ud83d\udccb Booked Tours:");
 
             for(int var1 = 0; var1 < this.bookedTours.size(); ++var1) {
                 System.out.println(var1 + 1 + ". " + ((Tour)this.bookedTours.get(var1)).getDetails());

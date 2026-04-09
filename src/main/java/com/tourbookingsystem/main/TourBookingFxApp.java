@@ -801,6 +801,10 @@ public class TourBookingFxApp extends Application {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
+        Button allBookingsButton = new Button("All Bookings");
+        allBookingsButton.getStyleClass().addAll("btn", "btn-secondary");
+        allBookingsButton.setOnAction(event -> showAdminBookingsPage());
+
         Button logoutButton = new Button("Logout");
         logoutButton.getStyleClass().addAll("btn", "btn-danger");
         logoutButton.setOnAction(event -> {
@@ -808,7 +812,7 @@ public class TourBookingFxApp extends Application {
             showAuthScene();
         });
 
-        topBar.getChildren().addAll(welcome, spacer, logoutButton);
+        topBar.getChildren().addAll(welcome, spacer, allBookingsButton, logoutButton);
 
         VBox listPanel = new VBox(10);
         listPanel.setPadding(new Insets(16));
@@ -1004,6 +1008,82 @@ public class TourBookingFxApp extends Application {
         root.setTop(topBar);
         root.setCenter(listPanel);
         root.setRight(formPanel);
+
+        primaryStage.setScene(styledScene(root));
+    }
+
+    private void showAdminBookingsPage() {
+        BorderPane root = new BorderPane();
+        root.getStyleClass().add("app-root");
+
+        HBox topBar = new HBox(12);
+        topBar.setPadding(new Insets(14, 24, 14, 24));
+        topBar.getStyleClass().add("top-bar");
+
+        Label title = new Label("All Bookings");
+        title.getStyleClass().add("top-title");
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        Button backButton = new Button("← Back");
+        backButton.getStyleClass().addAll("btn", "btn-ghost");
+        backButton.setOnAction(event -> showAdminDashboard());
+
+        topBar.getChildren().addAll(title, spacer, backButton);
+
+        VBox contentPanel = new VBox(16);
+        contentPanel.setPadding(new Insets(24));
+
+        List<Booking> allBookings = bookingService.getAllBookings();
+        if (allBookings.isEmpty()) {
+            Label emptyLabel = new Label("No bookings have been made yet.");
+            emptyLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: #999999;");
+            contentPanel.getChildren().add(emptyLabel);
+        } else {
+            ListView<Booking> bookingList = new ListView<>(
+                    FXCollections.observableArrayList(allBookings)
+            );
+            bookingList.setPrefHeight(520);
+            bookingList.setCellFactory(list -> new ListCell<>() {
+                @Override
+                protected void updateItem(Booking item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setGraphic(null);
+                    } else {
+                        HBox cell = new HBox(16);
+                        cell.setPadding(new Insets(12));
+                        cell.setStyle("-fx-border-color: #F0E6D3; -fx-border-width: 0 0 1 0; -fx-background-color: white;");
+
+                        VBox info = new VBox(4);
+                        Label tourName = new Label(item.getTourName());
+                        tourName.setStyle("-fx-font-weight: 600; -fx-font-size: 14px;");
+
+                        Label customer = new Label("Customer: " + item.getCustomerName());
+                        customer.setStyle("-fx-text-fill: #666666;");
+
+                        Label seats = new Label("Seats: " + item.getNumberOfTickets());
+                        seats.setStyle("-fx-text-fill: #666666;");
+
+                        String displayDate = item.getBookingDate() == null
+                                ? "N/A"
+                                : item.getBookingDate().format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
+                        Label bookedDate = new Label("Date: " + displayDate);
+                        bookedDate.setStyle("-fx-text-fill: #888888;");
+
+                        info.getChildren().addAll(tourName, customer, seats, bookedDate);
+                        cell.getChildren().add(info);
+                        setGraphic(cell);
+                    }
+                }
+            });
+
+            contentPanel.getChildren().add(bookingList);
+        }
+
+        root.setTop(topBar);
+        root.setCenter(contentPanel);
 
         primaryStage.setScene(styledScene(root));
     }

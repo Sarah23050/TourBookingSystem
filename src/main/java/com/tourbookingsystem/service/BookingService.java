@@ -2,6 +2,7 @@ package com.tourbookingsystem.service;
 
 import com.tourbookingsystem.model.Booking;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class BookingService {
                 writer.println(b.getBookingId() + "," +
                         b.getCustomerName() + "," +
                         b.getTourName() + "," +
-                        b.getNumberOfTickets());
+                        b.getNumberOfTickets() + "," +
+                        b.getBookingDate());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,12 +51,23 @@ public class BookingService {
                     String line = reader.nextLine();
                     String[] parts = line.split(",");
 
-                    Booking b = new Booking(
-                            Integer.parseInt(parts[0]),
-                            parts[1],
-                            parts[2],
-                            Integer.parseInt(parts[3])
-                    );
+                    Booking b;
+                    if (parts.length >= 5) {
+                        b = new Booking(
+                                Integer.parseInt(parts[0]),
+                                parts[1],
+                                parts[2],
+                                Integer.parseInt(parts[3]),
+                                LocalDate.parse(parts[4])
+                        );
+                    } else {
+                        b = new Booking(
+                                Integer.parseInt(parts[0]),
+                                parts[1],
+                                parts[2],
+                                Integer.parseInt(parts[3])
+                        );
+                    }
 
                     bookings.add(b);
                 }

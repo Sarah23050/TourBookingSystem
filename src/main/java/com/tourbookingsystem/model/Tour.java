@@ -6,13 +6,19 @@ public class Tour {
     private double price;
     private int availableSeats;
     private double date;
+    private String imageUrl;
 
-    public Tour(String var1, String var2, double var3, int var4, double var5) {
-        this.name = var1;
-        this.description = var2;
-        this.price = var3;
-        this.availableSeats = var4;
-        this.date = var5;
+    public Tour(String name, String description, double price, int availableSeats, double date) {
+        this(name, description, price, availableSeats, date, "");
+    }
+
+    public Tour(String name, String description, double price, int availableSeats, double date, String imageUrl) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.availableSeats = availableSeats;
+        this.date = date;
+        this.imageUrl = imageUrl;
     }
 
     public String getDetails() {
@@ -21,6 +27,10 @@ public class Tour {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     public double getPrice() {
@@ -35,6 +45,34 @@ public class Tour {
         return this.date;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setDate(double date) {
+        this.date = date;
+    }
+
+    public void setAvailableSeats(int seats) {
+        this.availableSeats = seats;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public void bookSeat() {
         --this.availableSeats;
     }
@@ -42,5 +80,4 @@ public class Tour {
     public void releaseSeat() {
         ++this.availableSeats;
     }
-
 }

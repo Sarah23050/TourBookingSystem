@@ -17,6 +17,10 @@ abstract class User {
         return this.username;
     }
 
+    public void setUsername(String newUsername) {
+        this.username = newUsername;
+    }
+
     public String getPassword() {
         return this.password;
     }

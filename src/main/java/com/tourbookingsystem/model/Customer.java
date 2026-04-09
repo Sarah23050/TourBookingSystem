@@ -2,6 +2,7 @@ package com.tourbookingsystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class Customer extends User {
     private List<Booking> bookings = new ArrayList<>();
@@ -15,11 +16,16 @@ public class Customer extends User {
     }
 
     public Booking bookTour(Tour tour, int seats) {
+        return bookTour(tour, seats, LocalDate.now());
+        }
+
+        public Booking bookTour(Tour tour, int seats, LocalDate bookingDate) {
         Booking booking = new Booking(
                 (int)(Math.random() * 1000),
                 this.username,
                 tour.getName(),
-                seats
+            seats,
+            bookingDate
         );
 
         bookings.add(booking);

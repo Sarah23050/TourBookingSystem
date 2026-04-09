@@ -1,0 +1,6 @@
+Sahara Desert Adventure-Morocco|3 days Experience the magic of the Sahara with camel rides, stargazing, and traditional Berber camps.|299.0|15|15.5|file:/C:/Users/user/Downloads/sahara-desert-photo.jpg
+Bali Ruins Trail-Indonesia|Discover ancient temples, rice terraces, and hidden waterfalls in the heart of Bali.|199.0|19|15.5|file:/C:/Users/user/Downloads/bali%20ruins.jpg
+Northern Lights Expedition-Iceland|Chase the aurora borealis across the Arctic wilderness with expert guides.|499.0|12|2.2|file:/C:/Users/user/Downloads/Northern%20Lights.jpg
+Amalfi Coast Sailing-Italy|3 days Sail along the stunning Amalfi Coast, stopping at charming villages and secret coves.|379.0|10|6.6|file:/C:/Users/user/Downloads/Amalfi%20Coast%20Sailing.jpg
+Machu Picchu Trek-Peru|Hike the legendary Inca Trail to the lost city of Machu Picchu.|449.0|16|5.5|file:/C:/Users/user/Downloads/machu-picchu-by-sunrise.jpeg
+Tokyo Street Food Tour-Japan|Explore hidden alleyways and taste the best street food Tokyo has to offer.|89.0|12|8.8|file:/C:/Users/user/Downloads/tokyo%20market%20%20.jpg

@@ -11,17 +11,65 @@ public class Admin extends User {
 
     public Admin(String var1, String var2) {
         super(var1, var2);
-        this.loadSampleTours();
     }
 
     public List<Customer> getAllCustomers() {
         return allCustomers;
     }
 
-    private void loadSampleTours() {
-        this.allTours.add(new Tour("Paris Adventure", "Visit Eiffel Tower", (double)500.0F, 10, 10.05));
-        this.allTours.add(new Tour("Beach Relax", "7 days beach vacation", (double)300.0F, 15, 01.01));
-        this.allTours.add(new Tour("Mountain Trek", "Hiking adventure", (double)400.0F, 8, 24.06));
+    public void loadSampleTours() {
+        this.allTours.add(new Tour(
+            "Sahara Desert Adventure-Morocco",
+            "3 days Experience the magic of the Sahara with camel rides, stargazing, and traditional Berber camps.",
+            299.0,
+            15,
+            15.5,
+            "https://static.vecteezy.com/system/resources/thumbnails/044/458/543/small/camels-in-the-sahara-desert-morocco-africa-photo.jpg"
+        ));
+        this.allTours.add(new Tour(
+            "Bali Ruins Trail-Indonesia",
+            "Discover ancient temples, rice terraces, and hidden waterfalls in the heart of Bali.",
+            199.0,
+            20,
+            15.5,
+            "https://media.istockphoto.com/id/653953140/photo/hindu-temple-in-bali.jpg?s=612x612&w=0&k=20&c=ysj3S2kV1ZgCr4QZWDzjvHRowCI3-cR1xQNnqE8-BS4="
+        ));
+        this.allTours.add(new Tour(
+            "Northern Lights Expedition-Iceland",
+            "Chase the aurora borealis across the Arctic wilderness with expert guides.",
+            499.0,
+            12,
+            2.2,
+            "https://media.istockphoto.com/id/614127332/photo/aurora-borealis.jpg?s=612x612&w=0&k=20&c=BXs-xClKQwAVPKGqjvO5LcmnE2Q73vwvhPgxtJvqEcg="
+        ));
+        this.allTours.add(new Tour(
+            "Amalfi Coast Sailing-Italy",
+            "3 days Sail along the stunning Amalfi Coast, stopping at charming villages and secret coves.",
+            379.0,
+            10,
+            6.6,
+            "https://media.istockphoto.com/id/992943278/photo/amalfitan-coast-with-cruise-liner.jpg?s=612x612&w=0&k=20&c=fssn1I6EYChqEedZXW0a8a3DM4AEkIvYbQouAfqF4Y0="
+        ));
+        this.allTours.add(new Tour(
+            "Machu Picchu Trek-Peru",
+            "Hike the legendary Inca Trail to the lost city of Machu Picchu.",
+            449.0,
+            16,
+            5.5,
+            "https://images.pexels.com/photos/18662534/pexels-photo-18662534/free-photo-of-machu-picchu-by-sunrise.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        ));
+        this.allTours.add(new Tour(
+            "Tokyo Street Food Tour-Japan",
+            "Explore hidden alleyways and taste the best street food Tokyo has to offer.",
+            89.0,
+            12,
+            8.8,
+            "https://media.istockphoto.com/id/1071391480/photo/osaka-shinsekai-at-night-tsutenkaku-tower.jpg?s=612x612&w=0&k=20&c=RrqZwqjYD0OUogqYbR5L4Q45xzqPkkVFkNjEpW0yT64="
+        ));
+    }
+
+    public void addTour(Tour tour) {
+        this.allTours.add(tour);
     }
 
     public void showAllBookings() {

@@ -1,7 +1,8 @@
-package com.sarah.tourbookingsystem.model;
+package com.tourbookingsystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class Customer extends User {
     private List<Booking> bookings = new ArrayList<>();
@@ -14,25 +15,32 @@ public class Customer extends User {
         return bookings;
     }
 
-    public void bookTour(Tour tour, int seats) {
+    public Booking bookTour(Tour tour, int seats) {
+        return bookTour(tour, seats, LocalDate.now());
+        }
+
+        public Booking bookTour(Tour tour, int seats, LocalDate bookingDate) {
         Booking booking = new Booking(
                 (int)(Math.random() * 1000),
                 this.username,
                 tour.getName(),
-                seats
+            seats,
+            bookingDate
         );
 
         bookings.add(booking);
 
-        System.out.println("✅ Booked " + seats + " seats for " + tour.getName());
+        return booking;
     }
 
-    public void cancelBooking(int index) {
+    public Booking cancelBooking(int index) {
         if (index >= 0 && index < bookings.size()) {
-            System.out.println("❌ Cancelled: " + bookings.get(index).getTourName());
-            bookings.remove(index);
+            Booking removed = bookings.remove(index);
+            System.out.println("❌ Cancelled: " + removed.getTourName());
+            return removed;
         } else {
             System.out.println("❌ Invalid selection!");
+            return null;
         }
     }
 

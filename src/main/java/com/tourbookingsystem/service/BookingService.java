@@ -1,6 +1,6 @@
-package com.sarah.tourbookingsystem.service;
+package com.tourbookingsystem.service;
 
-import com.sarah.tourbookingsystem.model.Booking;
+import com.tourbookingsystem.model.Booking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,7 @@ public class BookingService {
     }
 
     public void saveBookingsToFile() {
-        try {
-            java.io.PrintWriter writer = new java.io.PrintWriter("bookings.txt");
+        try (java.io.PrintWriter writer = new java.io.PrintWriter("bookings.txt")) {
 
             for (Booking b : bookings) {
                 writer.println(b.getBookingId() + "," +
@@ -31,36 +30,35 @@ public class BookingService {
                         b.getTourName() + "," +
                         b.getNumberOfTickets());
             }
-
-            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void loadBookingsFromFile() {
+        bookings.clear();
+
         try {
             java.io.File file = new java.io.File("bookings.txt");
 
             if (!file.exists()) return;
 
-            java.util.Scanner reader = new java.util.Scanner(file);
+            try (java.util.Scanner reader = new java.util.Scanner(file)) {
 
-            while (reader.hasNextLine()) {
-                String line = reader.nextLine();
-                String[] parts = line.split(",");
+                while (reader.hasNextLine()) {
+                    String line = reader.nextLine();
+                    String[] parts = line.split(",");
 
-                Booking b = new Booking(
-                        Integer.parseInt(parts[0]),
-                        parts[1],
-                        parts[2],
-                        Integer.parseInt(parts[3])
-                );
+                    Booking b = new Booking(
+                            Integer.parseInt(parts[0]),
+                            parts[1],
+                            parts[2],
+                            Integer.parseInt(parts[3])
+                    );
 
-                bookings.add(b);
+                    bookings.add(b);
+                }
             }
-
-            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,12 +1,18 @@
 plugins {
+    id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.14'
 }
 
 repositories {
     mavenCentral()
 }
 
+javafx {
+    version = '21'
+    modules = [ 'javafx.controls' ]
+}
 
 application {
-    mainClass = 'com.sarah.tourbookingsystem.main.TourBookingSystem'
+    mainClass = 'com.tourbookingsystem.main.TourBookingFxApp'
 }

@@ -1,4 +1,4 @@
-package com.sarah.tourbookingsystem.model;
+package com.tourbookingsystem.model;
 
 public class Booking {
     private int bookingId;

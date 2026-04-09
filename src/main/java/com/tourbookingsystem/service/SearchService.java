@@ -1,6 +1,6 @@
-package com.sarah.tourbookingsystem.service;
+package com.tourbookingsystem.service;
 
-import com.sarah.tourbookingsystem.model.Tour;
+import com.tourbookingsystem.model.Tour;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,6 +1,4 @@
-package com.sarah.tourbookingsystem.main;
-
-import com.sarah.tourbookingsystem.model.*;
+package com.tourbookingsystem.main;
 
 public class TourBookingSystem {
     public TourBookingSystem() {

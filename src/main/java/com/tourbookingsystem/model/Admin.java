@@ -1,7 +1,4 @@
-package com.sarah.tourbookingsystem.model;
-
-import com.sarah.tourbookingsystem.model.Tour;
-import com.sarah.tourbookingsystem.model.Customer;
+package com.tourbookingsystem.model;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -9,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Admin extends User {
-    private List<Tour> allTours = new ArrayList();
-    private List<Customer> allCustomers = new ArrayList();
+    private List<Tour> allTours = new ArrayList<>();
+    private List<Customer> allCustomers = new ArrayList<>();
 
     public Admin(String var1, String var2) {
         super(var1, var2);

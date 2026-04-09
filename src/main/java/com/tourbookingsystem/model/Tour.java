@@ -1,4 +1,4 @@
-package com.sarah.tourbookingsystem.model;
+package com.tourbookingsystem.model;
 
 public class Tour {
     private String name;
@@ -37,6 +37,10 @@ public class Tour {
 
     public void bookSeat() {
         --this.availableSeats;
+    }
+
+    public void releaseSeat() {
+        ++this.availableSeats;
     }
 
 }

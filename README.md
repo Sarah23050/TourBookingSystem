@@ -8,7 +8,7 @@ The system allows customers to browse tours, search and filter available options
 ## Features
 - User login and registration
 - Browse tours
-- Search and filter tours
+- Search for tours
 - Book tours
 - Cancel bookings
 - Admin management of tours
@@ -16,7 +16,6 @@ The system allows customers to browse tours, search and filter available options
 ## Technologies Used
 - Java
 - JavaFX
-- IntelliJ IDEA
 
 ## Team Members
 - Sarah Joujou
@@ -27,7 +26,7 @@ The system allows customers to browse tours, search and filter available options
 ## Project Structure
 - model → classes like Tour, Booking
 - service → logic like search and booking
-- ui → JavaFX interface
+- ui → JavaFX interface with CSS
 
 ## Notes
 This project is developed as part of a university course and focuses on software engineering principles and system design.

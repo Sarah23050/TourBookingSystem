@@ -17,8 +17,8 @@ public class BookingSystem {
     public BookingSystem() {
         this.scanner = new Scanner(System.in);
         this.currentCustomer = null;
-
         bookingService.loadBookingsFromFile();
+
     }
 
     public void start() {
@@ -140,8 +140,9 @@ public class BookingSystem {
             System.out.println("2. Search tours");
             System.out.println("3. Filter by price");
             System.out.println("4. Book a tour");
-            System.out.println("5. View my bookings");
-            System.out.println("6. Logout");
+            System.out.println("5. Cancel booking");
+            System.out.println("6. View my bookings");
+            System.out.println("7. Logout");
             System.out.print("Choose: ");
             int var1 = this.scanner.nextInt();
             this.scanner.nextLine();
@@ -159,9 +160,12 @@ public class BookingSystem {
                     this.bookTour();
                     break;
                 case 5:
-                    this.currentCustomer.showBookedTours();
+                    cancelBooking();
                     break;
                 case 6:
+                    this.currentCustomer.showBookedTours();
+                    break;
+                case 7:
                     this.showRegisterPage();
                     return;
                 default:
@@ -192,6 +196,11 @@ public class BookingSystem {
 
         var results = searchService.filterByPrice(admin.getAllTours(), price);
 
+        if(results.isEmpty()) {
+            System.out.println("No tours found under this price. Try again.");
+            return;
+        }
+
         for (int i = 0; i < results.size(); i++) {
             System.out.println((i+1) + ". " + results.get(i).getDetails());
         }
@@ -213,7 +222,9 @@ public class BookingSystem {
                     var2.bookSeat();
                 }
 
-                currentCustomer.bookTour(var2);
+                currentCustomer.bookTour(var2, var1);
+                bookingService.saveBookingsToFile();
+
                 System.out.println("✅ Booked " + var3 + " seats!");
             } else {
                 System.out.println("❌ Not enough seats!");
@@ -222,5 +233,16 @@ public class BookingSystem {
             System.out.println("❌ Invalid tour number!");
         }
 
+    }
+
+    private void cancelBooking() {
+        currentCustomer.showBookedTours();
+
+        System.out.print("Enter booking number to cancel: ");
+        int index = scanner.nextInt() - 1;
+        scanner.nextLine();
+
+        currentCustomer.cancelBooking(index);
+        bookingService.saveBookingsToFile();
     }
 }

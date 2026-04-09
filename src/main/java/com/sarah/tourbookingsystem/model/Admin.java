@@ -22,9 +22,9 @@ public class Admin extends User {
     }
 
     private void loadSampleTours() {
-        this.allTours.add(new Tour("Paris Adventure", "Visit Eiffel Tower", (double)500.0F, 10, 10/3));
-        this.allTours.add(new Tour("Beach Relax", "7 days beach vacation", (double)300.0F, 15, 1/1));
-        this.allTours.add(new Tour("Mountain Trek", "Hiking adventure", (double)400.0F, 8, 24/6));
+        this.allTours.add(new Tour("Paris Adventure", "Visit Eiffel Tower", (double)500.0F, 10, 10.05));
+        this.allTours.add(new Tour("Beach Relax", "7 days beach vacation", (double)300.0F, 15, 01.01));
+        this.allTours.add(new Tour("Mountain Trek", "Hiking adventure", (double)400.0F, 8, 24.06));
     }
 
     public void showAllBookings() {
@@ -32,7 +32,12 @@ public class Admin extends User {
 
         for(Customer var2 : this.allCustomers) {
             System.out.println("\n\ud83d\udc64 " + var2.getUsername() + ":");
-            var2.showBookedTours();
+            for (Booking b : var2.getBookings()) {
+                System.out.println(
+                        "Tour: " + b.getTourName() +
+                                " | Seats: " + b.getNumberOfTickets()
+                );
+            }
         }
 
     }
